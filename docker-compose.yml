@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: amazonwh-db
+    environment:
+      POSTGRES_DB: amazonwh
+      POSTGRES_USER: amazonwh
+      POSTGRES_PASSWORD: amazonwh123
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
