@@ -30,7 +30,10 @@
       "Bash(open:*)",
       "Bash(node -e:*)",
       "Bash(./mvnw compile:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(kill:*)",
+      "Bash(JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home mvn flyway:repair:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MTI3MDAyMiwiZXhwIjoxNzcxMzU2NDIyfQ.XZGbyPKTxhMPqbC5lcwtMvAt5TYoYRk5BKPv3qFUPAbqhDO7fARs9jKx9rYJItZv\")"
     ]
   }
 }
