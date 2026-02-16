@@ -1,0 +1,56 @@
+CREATE TABLE sku (
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    description VARCHAR(255) NOT NULL,
+    uom VARCHAR(20) NOT NULL DEFAULT 'EACH',
+    weight NUMERIC(10,2),
+    length NUMERIC(10,2),
+    width NUMERIC(10,2),
+    height NUMERIC(10,2),
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE vendor (
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(30) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    contact_name VARCHAR(100),
+    email VARCHAR(100),
+    phone VARCHAR(30),
+    address VARCHAR(255),
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE carrier (
+    id BIGSERIAL PRIMARY KEY,
+    code VARCHAR(30) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    scac VARCHAR(10),
+    contact_name VARCHAR(100),
+    phone VARCHAR(30),
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE location (
+    id BIGSERIAL PRIMARY KEY,
+    dc_id BIGINT NOT NULL REFERENCES dc(id),
+    code VARCHAR(30) NOT NULL,
+    zone VARCHAR(20) NOT NULL,
+    aisle VARCHAR(10),
+    bay VARCHAR(10),
+    level VARCHAR(10),
+    position VARCHAR(10),
+    loc_type VARCHAR(20) NOT NULL DEFAULT 'STORAGE',
+    max_qty INTEGER DEFAULT 9999,
+    pick_sequence INTEGER DEFAULT 0,
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(dc_id, code)
+);
